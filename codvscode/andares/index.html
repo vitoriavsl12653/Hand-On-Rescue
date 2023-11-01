@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Formulario hor</title>
+</head>
+<body>
+    <div class="content">
+        <h1>Hand On Rescue</h1>
+        <form>
+            <p>Em qual Bloco você está?</p>
+            <div class="box-select">
+                <div>
+                    <input type="radio" id="A" value="A" name="Blocos">
+                    <label for="A">Bloco A</label>
+                </div>
+                <div>
+                    <input type="radio" id="B" value="B" name="Blocos">
+                    <label for="B">Bloco B</label>
+                </div>
+                <div>
+                    <input type="radio" id="C" value="C" name="Blocos">
+                    <label for="C">Bloco C</label>
+                </div>
+                <div>
+                    <input type="radio" id="D" value="D" name="Blocos">
+                    <label for="D">Bloco D</label>
+                </div>
+                <div>
+                    <input type="radio" id="E/F" value="E/F" name="Blocos">
+                    <label for="E/F">Bloco E/F</label>
+                </div>
+            </div>
+            <span id="erro-selecao" style="color: red; display: none;">Escolha uma das opções</span>
+            <button type="submit" formaction="./andares/escolhaandar.html">Próximo</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const opcoesSelecionadas = document.querySelectorAll('input[name="Blocos"]:checked');
+            if (opcoesSelecionadas.length === 0) {
+                document.getElementById('erro-selecao').style.display = 'block';
+                event.preventDefault();
+            } else {
+                const blocoSelecionado = opcoesSelecionadas[0].value;
+                if (blocoSelecionado !== 'E/F') {
+                    alert('O site está em atualização! Apenas o bloco E/F está em funcionamento');
+                    event.preventDefault();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

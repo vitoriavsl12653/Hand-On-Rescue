@@ -1,0 +1,33 @@
+#confirmacao-mensagem {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2b2523;
+    border: 1px solid #150c0c;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.botao-confirmar {
+    background-color: #08b90e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 90px; 
+    width: 100px;
+}
+
+.botao-cancelar {
+    background-color: #db1414;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100px ;
+
+}

@@ -1,0 +1,86 @@
+:root {
+    --color-white: #fff;
+    --color-red: #ac0b0b;
+    --color-dark1: #181818;
+    --color-dark2: #1e1e1e;
+    --color-orange1: #d8360d;
+    --color-orange2: #df5920;
+    --color-red2: #db2020;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(45deg, var(--color-red), var(--color-dark2), var(--color-red), var(--color-dark2));
+    background-size: 400% 400%;
+    color: var(--color-white);
+    animation: dynamic-background 15s infinite;
+    overflow: hidden;
+    position: relative;
+    font-size: 16px;
+    padding-top: 50px; 
+    padding-bottom: 50px; 
+}
+
+#sala-info {
+    background-color: var(--color-dark1);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(235, 230, 230, 0.2);
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#andar-options {
+    color: var(--color-white);
+    text-align: left;
+}
+
+h1 {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 24px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+#proximo {
+    background-color: var(--color-red);
+    color: #fff;
+    border: none;
+    padding: 10px 90px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px auto;
+    display: block;
+}
+
+#proximo:hover {
+    background-color: var(--color-red2);
+}
+
+#erro-sala {
+    color: var(--color-red);
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 50px; 
+        padding-bottom: 50px; 
+    }
+    #sala-info {
+        max-width: 90%; 
+    }
+}

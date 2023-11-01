@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>4º Andar</title>
+    <link rel="stylesheet" href="../styles/style.css2salas.css">
+    <link rel="stylesheet" href="../styles/style.cssQuadradoconfirmação.css">
+</head>
+<body>
+    <form id="sala-form" method="post" action="https://api.staticforms.xyz/submit">
+        <h1>4º Andar</h1>
+        <p>Em qual sala você está?</p>
+        <label><input type="radio" name="sala" value="Sala: 409"> Sala 409</label><br>
+        <label><input type="radio" name="sala" value="Sala: 410"> Sala 410</label><br>
+        <label><input type="radio" name="sala" value="Sala: 412"> Sala 412</label><br>
+        <label><input type="radio" name="sala" value="Sala: 413"> Sala 413</label><br>
+        <label><input type="radio" name="sala" value="Sala: 415"> Sala 415</label><br>
+        <label><input type="radio" name="sala" value="Sala: 416"> Sala 416</label><br>
+        <label><input type="radio" name="sala" value="Sala: 417"> Sala 417</label><br>
+        <label><input type="radio" name="sala" value="Sala: 418"> Sala 418</label><br>
+        <label><input type="radio" name="sala" value="Sala: 419"> Sala 419</label><br>
+        <label><input type="radio" name="sala" value="Sala: 421"> Sala 421</label><br>
+        <label><input type="radio" name="sala" value="Sala: 424"> Sala 424</label><br>
+        <label><input type="radio" name="sala" value="Sala: 425"> Sala 425</label><br>
+        <label><input type="radio" name="sala" value="Sala: 426"> Sala 426</label><br>
+        <label><input type="radio" name="sala" value="Sala: 427"> Sala 427</label><br>
+        <label><input type="radio" name="sala" value="Sala: 429"> Sala 429</label><br>
+        <label><input type="radio" name="sala" value="Sala: EAD sala de aula"> EAD sala de aula</label><br>
+        <label><input type="radio" name="sala" value="Sala: Laboratório de inofrmática 9"> Laboratório de informática 9</label><br>
+        <label><input type="radio" name="sala" value="Sala: Laboratório de informática ead"> Laboratório de informática EAD</label><br>
+        
+        <div id="erro-sala" style="color: red; margin-top: 10px;"></div>
+
+        <div id="confirmacao-mensagem" style="display: none;">
+            <p>Deseja confirmar o envio da mensagem?</p>
+            <button type="button" id="confirmar-envio" class="botao-confirmar">Confirmar</button>
+            <button type="button" id="cancelar-envio" class="botao-cancelar">Cancelar</button>
+        </div>
+
+        <input type="hidden" name="accessKey" value="0cb3bf99-6426-4726-bce6-b8586ccabc95">
+        <input type="hidden" name="subject" value="Emergência no Bloco E/F Terréo, Sala Selecionada">
+       
+        <input type="submit" value="Selecionar Sala">
+    </form>
+
+    <script>
+        const salaForm = document.getElementById('sala-form');
+        const erroSala = document.getElementById('erro-sala');
+        const confirmacaoMensagem = document.getElementById('confirmacao-mensagem');
+        const confirmarEnvio = document.getElementById('confirmar-envio');
+        const cancelarEnvio = document.getElementById('cancelar-envio');
+
+        salaForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const salaSelecionada = document.querySelector('input[name="sala"]:checked');
+            if (!salaSelecionada) {
+                erroSala.textContent = 'Por favor, escolha uma sala.';
+            } else {
+                erroSala.textContent = '';
+                confirmacaoMensagem.style.display = 'block';
+            }
+        });
+
+        confirmarEnvio.addEventListener('click', function() {
+            const salaSelecionada = document.querySelector('input[name="sala"]:checked');
+            const mensagemEmergencia = `Emergência no Bloco: E/F, Andar: Terréo,  ${salaSelecionada.value}`;
+            const subjectInput = document.querySelector('input[name="subject"]');
+            subjectInput.value = mensagemEmergencia;
+            salaForm.submit();
+        });
+
+        cancelarEnvio.addEventListener('click', function() {
+            confirmacaoMensagem.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

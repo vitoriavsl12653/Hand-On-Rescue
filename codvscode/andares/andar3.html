@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>3º Andar</title>
+    <link rel="stylesheet" href="../styles/style.css2salas.css">
+    <link rel="stylesheet" href="../styles/style.cssQuadradoconfirmação.css">
+</head>
+<body>
+    <form id="sala-form" method="post" action="https://api.staticforms.xyz/submit">
+        <h1>3º Andar</h1>
+        <p>Em qual sala você está?</p>
+        <label><input type="radio" name="sala" value="Sala: 302"> Sala 302</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 303"> Sala 303</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 305"> Sala 305</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 306"> Sala 306</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 307"> Sala 307</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 309"> Sala 309</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 310"> Sala 310</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 312"> Sala 312</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 313"> Sala 313</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 315"> Sala 315</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 316"> Sala 316</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 317"> Sala 317</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 318"> Sala 318</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 319"> Sala 319</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 321"> Sala 321</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 324"> Sala 324</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 325"> Sala 325</label><br>
+        <label><input type= "radio" name="sala" value="Sala: 327"> Sala 327</label><br>
+        
+       
+        <div id="erro-sala" style="color: red; margin-top: 10px;"></div>
+
+        <div id="confirmacao-mensagem" style="display: none;">
+            <p>Deseja confirmar o envio da mensagem?</p>
+            <button type="button" id="confirmar-envio" class="botao-confirmar">Confirmar</button>
+            <button type="button" id="cancelar-envio" class="botao-cancelar">Cancelar</button>
+        </div>
+
+        <input type="hidden" name="accessKey" value="0cb3bf99-6426-4726-bce6-b8586ccabc95">
+        <input type="hidden" name="subject" value="Emergência no Bloco E/F Terréo, Sala Selecionada">
+        
+        <input type="submit" value="Selecionar Sala">
+    </form>
+
+    <script>
+        const salaForm = document.getElementById('sala-form');
+        const erroSala = document.getElementById('erro-sala');
+        const confirmacaoMensagem = document.getElementById('confirmacao-mensagem');
+        const confirmarEnvio = document.getElementById('confirmar-envio');
+        const cancelarEnvio = document.getElementById('cancelar-envio');
+
+        salaForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const salaSelecionada = document.querySelector('input[name="sala"]:checked');
+            if (!salaSelecionada) {
+                erroSala.textContent = 'Por favor, escolha uma sala.';
+            } else {
+                erroSala.textContent = '';
+                confirmacaoMensagem.style.display = 'block';
+            }
+        });
+
+        confirmarEnvio.addEventListener('click', function() {
+            const salaSelecionada = document.querySelector('input[name="sala"]:checked');
+            const mensagemEmergencia = `Emergência no Bloco: E/F, Andar: Terréo, ${salaSelecionada.value}`;
+            const subjectInput = document.querySelector('input[name="subject"]');
+            subjectInput.value = mensagemEmergencia;
+            salaForm.submit();
+        });
+
+        cancelarEnvio.addEventListener('click', function() {
+            confirmacaoMensagem.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

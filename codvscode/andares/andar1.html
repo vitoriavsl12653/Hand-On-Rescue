@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>1º Andar</title>
+    <link rel="stylesheet" href="../styles/style.css2salas.css">
+    <link rel="stylesheet" href="../styles/style.cssQuadradoconfirmação.css">
+</head>
+<body>
+
+    <form id="sala-form" method="post" action="https://api.staticforms.xyz/submit">
+        <h1>1º Andar</h1>
+        <p>Em qual sala você está?</p>
+        <label><input type="radio" name="sala" value="Sala: 106"> Sala 106</label><br>
+        <label><input type="radio" name="sala" value="Sala: 107"> Sala 107</label><br>
+        <label><input type="radio" name="sala" value="Sala: 109"> Sala 109</label><br>
+        <label><input type="radio" name="sala" value="Sala: 110"> Sala 110</label><br>
+        <label><input type="radio" name="sala" value="Sala: 112"> Sala 112</label><br>
+        <label><input type="radio" name="sala" value="Sala: 113"> Sala 113</label><br>
+        <label><input type="radio" name="sala" value="Sala: 114"> Sala 114</label><br>
+        <label><input type="radio" name="sala" value="Sala: 115"> Sala 115</label><br>
+        <label><input type="radio" name="sala" value="Sala: 116"> Sala 116</label><br>
+        <label><input type="radio" name="sala" value="Sala: 117"> Sala 117</label><br>
+        <label><input type="radio" name="sala" value="Sala: 118"> Sala 118</label><br>
+        <label><input type="radio" name="sala" value="Sala: 119"> Sala 119</label><br>
+        <label><input type="radio" name="sala" value="Sala: 120"> Sala 120</label><br>
+        <label><input type="radio" name="sala" value="Sala: 121"> Sala 121</label><br>
+        <label><input type="radio" name="sala" value="Sala: 124"> Sala 124</label><br>
+        <label><input type="radio" name="sala" value="Sala: 125"> Sala 125</label><br>
+        <label><input type="radio" name="sala" value="Sala: 126"> Sala 126</label><br>
+        <label><input type="radio" name="sala" value="Sala: 127"> Sala 127</label><br>
+        <label><input type="radio" name="sala" value="Sala: 129"> Sala 129</label><br>
+        <label><input type="radio" name="sala" value="Sala: 131"> Sala 131</label><br>
+        <label><input type="radio" name="sala" value="Sala: multidisciplinar"> Sala multidisciplinar</label><br>
+        <label><input type="radio" name="sala" value="Sala: Laboratório de informática 11"> Laboratório de informática 11</label><br>
+
+        <div id="erro-sala" style="color: red; margin-top: 10px;"></div>
+
+        <div id="confirmacao-mensagem" style="display: none;">
+            <p>Deseja confirmar o envio da mensagem?</p>
+            <button type="button" id="confirmar-envio" class="botao-confirmar">Confirmar</button>
+            <button type="button" id="cancelar-envio" class="botao-cancelar">Cancelar</button>
+        </div>
+
+        <input type="hidden" name="accessKey" value="0cb3bf99-6426-4726-bce6-b8586ccabc95">
+        <input type="hidden" name="subject" value="Emergência no Bloco E/F Terréo, Sala Selecionada">
+       
+        <input type="submit" value="Selecionar Sala">
+    </form>
+
+    <script>
+        const salaForm = document.getElementById('sala-form');
+        const erroSala = document.getElementById('erro-sala');
+        const confirmacaoMensagem = document.getElementById('confirmacao-mensagem');
+        const confirmarEnvio = document.getElementById('confirmar-envio');
+        const cancelarEnvio = document.getElementById('cancelar-envio');
+
+        salaForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const salaSelecionada = document.querySelector('input[name="sala"]:checked');
+            if (!salaSelecionada) {
+                erroSala.textContent = 'Por favor, escolha uma sala.';
+            } else {
+                erroSala.textContent = '';
+                confirmacaoMensagem.style.display = 'block';
+            }
+        });
+
+        confirmarEnvio.addEventListener('click', function() {
+            const salaSelecionada = document.querySelector('input[name="sala"]:checked');
+            const mensagemEmergencia = `Emergência no Bloco: E/F, Andar: Terréo, ${salaSelecionada.value}`;
+            const subjectInput = document.querySelector('input[name="subject"]');
+            subjectInput.value = mensagemEmergencia;
+            salaForm.submit();
+        });
+
+        cancelarEnvio.addEventListener('click', function() {
+            confirmacaoMensagem.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

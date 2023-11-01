@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Sala</title>
+   <link rel="stylesheet" href="../styles/style.css3andar.css">
+</head>
+<body>
+    <div id="sala-info">
+        <div id="andar-options">
+            <h1>Selecione um andar</h1>
+            <label><input type="radio" name="andar" value="Terreo"> Térreo</label><br>
+            <label><input type="radio" name="andar" value="Andar1"> 1º andar</label><br>
+            <label><input type="radio" name="andar" value="Andar2"> 2º andar</label><br>
+            <label><input type="radio" name="andar" value="Andar3"> 3º andar</label><br>
+            <label><input type="radio" name="andar" value="Andar4"> 4º andar</label><br>
+            <label><input type="radio" name="andar" value="CO"> CO</label><br>
+        </div>
+        <div id="erro-sala" style="color: red; margin-top: 10px;"></div>
+        <button type="submit" id="proximo">Próximo</button>
+    </div>
+    <script>
+        document.getElementById('andar-options').addEventListener('change', function() {
+            const proximoBotao = document.getElementById('proximo');
+            proximoBotao.style.display = 'block';
+            const erroSala = document.getElementById('erro-sala');
+            erroSala.textContent = ''; 
+        });
+
+        document.getElementById('proximo').addEventListener('click', function() {
+            const andarSelecionado = document.querySelector('input[name="andar"]:checked');
+            if (andarSelecionado) {
+                const andarValue = andarSelecionado.value;
+                if (andarValue==="Terreo"){
+                    window.location.href= 'terreo.html';
+                } else if (andarValue==="Andar1"){
+                    window.location.href = 'andar1.html';
+                } else if (andarValue==="Andar2"){
+                    window.location.href = 'andar2.html';
+                } else if (andarValue==="Andar3"){
+                    window.location.href = 'andar3.html';
+                } else if (andarValue==="Andar4"){
+                    window.location.href= 'andar4.html';
+                } else if (andarValue==="CO"){
+                    window.location.href = 'CO.html';
+                }
+            } else {
+                const erroSala = document.getElementById('erro-sala');
+                erroSala.textContent = ('Por favor, escolha um andar.');
+            }
+        });
+    </script>
+</body>
+</html>
